@@ -18,15 +18,11 @@ import net.bytebuddy.utility.RandomString;
 
 public class Requirement002 extends TestBase{
 	
-	@Before
-	public static void launchBrowser()
-	{
-		TestBase.init();
-	}
 	
-	@Given("User login to the Application with the usname {string} and pwd {string}")
-	public void user_login_to_the_Application_with_the_usname_and_pwd(String uname, String pwd) throws IOException {
-	    // Write code here that turns the phrase above into concrete actions
+	
+	@Given("User login to the Application with valid usname and pwd")
+	public void User_login_to_the_Application_with_valid_usname_and_pwd() throws IOException {
+	    
 	    driver.get(Configure.url);
 	    driver.findElement(By.xpath(readDataFromProp("login.username"))).sendKeys(Configure.username);
 	    driver.findElement(By.xpath(readDataFromProp("login.pwd"))).sendKeys(Configure.password);
@@ -36,7 +32,7 @@ public class Requirement002 extends TestBase{
 
 	@When("User click on add new coupon icon on page.")
 	public void user_click_on_add_new_coupon_icon_on_page() throws IOException {
-	    // Write code here that turns the phrase above into concrete actions
+	    
 		driver.findElement(By.xpath(readDataFromProp("dashboard.sourcelink"))).click();
 		driver.findElement(By.xpath(readDataFromProp("dashboard.couponlink"))).click();
 		driver.findElement(By.xpath(readDataFromProp("dashboard.addnewCouponbutton"))).click();
@@ -65,10 +61,11 @@ public class Requirement002 extends TestBase{
 		WebPage.verifySuccessMessage();
 		System.out.println("Coupon "+TestData.couponCode+ " has added successfully");
 
+		
 	}
 
-	@Given("Select the newly created coupon code {string}")
-	public void select_the_newly_created_coupon_code(String string) {
+	@Given("Select the newly created coupon code")
+	public void Select_the_newly_created_coupon_code() {
 	    // Write code here that turns the phrase above into concrete actions
 		
 	    driver.findElement(By.xpath("//tr[td[text()='"+TestData.couponName+"']]//a[@data-original-title='Edit']")).click();
@@ -88,11 +85,9 @@ public class Requirement002 extends TestBase{
 		System.out.println("Coupon "+TestData.couponCode+" has modified successfully");
 	}
 
-	@Given("select the modified coupon code {string}from the coupon list")
-	public void select_the_modified_coupon_code_from_the_coupon_list(String string) {
+	@Given("select the modified coupon code from the coupon list")
+	public void select_the_modified_coupon_code_from_the_coupon_list() {
 	    // Write code here that turns the phrase above into concrete actions
-		driver.findElement(By.xpath("//tr[td[text()='"+TestData.couponName+"']]//input")).click();
-		
 	}
 
 	@When("Select the coupon and delete it")

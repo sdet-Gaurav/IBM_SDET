@@ -23,25 +23,11 @@ public class TestBase {
 	public  WebDriverWait wait;
 	static Select select;
 	
-	public static void init()
-	{
-		WebDriverManager.chromedriver().setup();
-
-		driver = new ChromeDriver();
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\002OC3744\\GauravKumar\\Workspace_cucumber\\cucumber\\Drivers\\chromedriver.exe");
-		System.out.println("driver has initialized");
-	}
 	
-	public static void tearDown()
-	{
-		driver.quit();
-		System.out.println("driver session has ended");
-	}
 	
 	public static String readDataFromProp(String key) throws IOException
 	{
-		FileInputStream fs=new FileInputStream("C:\\Users\\002OC3744\\GauravKumar\\Workspace_cucumber\\cucumber\\ObjectRepository\\Selenium_Web_Elements.properties");
+		FileInputStream fs=new FileInputStream(System.getProperty("user.dir")+"\\ObjectRepository\\Selenium_Web_Elements.properties");
 		prop=new Properties();
 		prop.load(fs);
 		String value=prop.getProperty(key);

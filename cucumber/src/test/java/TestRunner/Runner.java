@@ -8,8 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions
 	(features = {"src\\test\\java\\Features" }, 
-	glue = {"Step_defination" }, 
-	plugin = { "pretty" })
+	glue = {"Step_defination" ,"Hooks"}, 
+			plugin = { "pretty", "json:./Reports/reports.json" },monochrome = true )
+
 	public class Runner {	
 
 }
